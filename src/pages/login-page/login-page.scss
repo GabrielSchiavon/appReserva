@@ -1,0 +1,30 @@
+page-login-page {
+  .header {
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #DCDCDC;
+  }
+
+  .iconUem {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 200px;
+    height: 95px;
+  }
+
+  .btn {
+    margin-left: 17px;
+    margin-right: 5px;
+    position: relative;
+    width: 80px;
+    height: 30px;
+  }
+
+  .ion-card {
+    top: 60%;
+    position: absolute;
+    text-align: center;
+  }
+}

@@ -1,0 +1,61 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Usuário</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Nome</ion-label>
+      <ion-input [(ngModel)]="user.nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>email</ion-label>
+      <ion-input [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Telefone</ion-label>
+      <ion-input [(ngModel)]="user.telefone"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Departamento</ion-label>
+      <ion-select [(ngModel)]="user.id_departamento" okText="Selecionar" cancelText="Cancelar">
+        <ion-option *ngFor="let d of departaments" value="{{ d.id }}"> {{ d.nome }} </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Permissão</ion-label>
+      <ion-select [(ngModel)]="user.permissao" okText="Selecionar" cancelText="Cancelar">
+        <ion-option value="1"> Docente </ion-option>
+        <ion-option value="2"> Administrador de Sala </ion-option>
+        <ion-option value="3"> Administrador de Departamento </ion-option>
+        <ion-option value="4"> Administrador de Sistema </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Problemas de Locomoção</ion-label>
+      <ion-select [(ngModel)]="user.problema_locomocao" okText="Selecionar" cancelText="Cancelar">
+        <ion-option value="0"> Não </ion-option>
+        <ion-option value="1"> Sim </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <button ion-button block (click)="save()">Salvar</button>
+  </ion-list>
+
+</ion-content>

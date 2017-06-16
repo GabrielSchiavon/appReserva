@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Reserva</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Data da Reserva</ion-label>
+      <ion-datetime displayFormat= "DD/MM/YYYY" [(ngModel)]="reservation.datareserva" (ngModelChange)="reservation.datareserva = changeDateToString($event)"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Docente</ion-label>
+      <ion-input readonly="true" [(ngModel)]="user.nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Departamento</ion-label>
+      <ion-select [(ngModel)]="reservation.iddepartamento" okText="Selecionar" cancelText="Cancelar">
+        <ion-option *ngFor="let d of departaments" value="{{ d.id }}"> {{ d.nome }} </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Tipo de aula</ion-label>
+      <ion-select [(ngModel)]="reservation.tipoaula" okText="Selecionar" cancelText="Cancelar">
+        <ion-option value="1"> Prática </ion-option>
+        <ion-option value="2"> Teórica </ion-option>
+        <ion-option value="3"> Mestrado </ion-option>
+        <ion-option value="4"> Especialização </ion-option>
+        <ion-option value="5"> Defesa </ion-option>
+        <ion-option value="6"> Minicurso </ion-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

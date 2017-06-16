@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Sala</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Número</ion-label>
+      <ion-input [(ngModel)]="room.numero"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Departamento</ion-label>
+      <ion-select [(ngModel)]="room.id_departamento" okText="Selecionar" cancelText="Cancelar">
+        <ion-option *ngFor="let d of departaments" value="{{ d.id }}"> {{ d.nome }} </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>classificação</ion-label>
+      <ion-select [(ngModel)]="room.classificacao" okText="Selecionar" cancelText="Cancelar">
+        <ion-option value="1"> Laboratório </ion-option>
+        <ion-option value="2"> Sala de projeção </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Descrição</ion-label>
+      <ion-input [(ngModel)]="room.descricao"></ion-input>
+    </ion-item>
+
+    <button ion-button block (click)="save()">Salvar</button>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Curso</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Nome</ion-label>
+      <ion-input [(ngModel)]="course.nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Descrição</ion-label>
+      <ion-input [(ngModel)]="course.descricao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Departamento</ion-label>
+      <ion-select [(ngModel)]="course.id_departamento" okText="Selecionar" cancelText="Cancelar">
+        <ion-option *ngFor="let d of departaments" value="{{ d.id }}"> {{ d.nome }} </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Tipo</ion-label>
+      <ion-select [(ngModel)]="course.tipo" okText="Selecionar" cancelText="Cancelar">
+        <ion-option value="1">Interno</ion-option>
+        <ion-option value="2">Externo</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <button ion-button block (click)="save()">Salvar</button>
+  </ion-list>
+</ion-content>

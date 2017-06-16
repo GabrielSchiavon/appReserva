@@ -1,0 +1,47 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Ano Letivo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Departamento</ion-label>
+      <ion-select [(ngModel)]="academicYear.iddepartamento" okText="Selecionar" cancelText="Cancelar">
+        <ion-option *ngFor="let d of departaments" value="{{ d.id }}"> {{ d.nome }} </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Inicio Primeiro Semestre</ion-label>
+      <ion-datetime displayFormat= "DD/MM/YYYY" [(ngModel)]="academicYear.iniciop" (ngModelChange)="academicYear.iniciop = changeDateToString($event)"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Fim Primeiro Semestre</ion-label>
+      <ion-datetime displayFormat= "DD/MM/YYYY" [(ngModel)]="academicYear.fimp" (ngModelChange)="academicYear.fimp = changeDateToString($event)"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Inicio Segundo Semestre</ion-label>
+      <ion-datetime displayFormat= "DD/MM/YYYY" [(ngModel)]="academicYear.inicios" (ngModelChange)="academicYear.inicios = changeDateToString($event)"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Fim Segundo Semestre</ion-label>
+      <ion-datetime displayFormat= "DD/MM/YYYY" [(ngModel)]="academicYear.fims" (ngModelChange)="academicYear.fims = changeDateToString($event)"></ion-datetime>
+    </ion-item>
+    <button ion-button block (click)="save()">Salvar</button>
+  </ion-list>
+
+</ion-content>
