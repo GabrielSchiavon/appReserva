@@ -4,7 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login-page/login-page';
 import { CoursePage } from '../pages/course-page/course-page';
 import { CourseModal} from '../pages/course-modal/course-modal';
@@ -18,7 +17,7 @@ import { AcademicYearPage } from '../pages/academic-year-page/academic-year-page
 import { AcademicYearModal } from '../pages/academic-year-modal/academic-year-modal';
 import { ReservationModal } from '../pages/reservation-modal/reservation-modal';
 import { DisciplinePage } from '../pages/discipline-page/discipline-page';
-import { DisciplineModal } from '../pages/discipline-modal/discipline-modal'; 
+import { DisciplineModal } from '../pages/discipline-modal/discipline-modal';
 
 import { ConnectionService } from '../providers/connection-service';
 import { HttpModule } from '@angular/http';
@@ -30,7 +29,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     LoginPage,
     CoursePage,
     CourseModal,
@@ -55,7 +53,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     LoginPage,
     CoursePage,
     CourseModal,

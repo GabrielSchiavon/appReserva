@@ -8,7 +8,21 @@ export class ConnectionService {
   baseUri: string;
 
   constructor(public http: Http) {
-    this.baseUri = "http://din.uem.br/appsmoveis/webresources/reserva/";
+    this.baseUri = "http://localhost:8084/AppUemWS/webresources/reserva/";
+    //this.baseUri = "http://din.uem.br/appsmoveis/webresources/reserva/";
+  }
+
+  loadToday() : Promise<Response> {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.baseUri+'solicitarDataAtual')
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+        },
+        error => {
+          reject(error);
+        });
+    });
   }
 
   confirmarLogin(email: string, senha: string) : Promise<Response>{
@@ -407,9 +421,9 @@ export class ConnectionService {
     });
   }
 
-  loadDisciplineById(id: number) {
+  loadDisciplineById(id: string) {
     return new Promise((resolve, reject) => {
-      this.http.get(this.baseUri+'disciplina/carregarDisciplinaPorId/'+id.toString())
+      this.http.get(this.baseUri+'disciplina/carregarDisciplinasPorId/'+id)
         .map(res => res.json())
         .subscribe(data => {
           resolve(data);
