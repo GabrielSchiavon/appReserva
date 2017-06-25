@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, ModalController, ToastController  } from 'ionic-angular';
+import { NavController, AlertController, ModalController, ToastController, MenuController  } from 'ionic-angular';
 
 import { ConnectionService } from '../../providers/connection-service';
 import { ReservationModal } from './../reservation-modal/reservation-modal';
@@ -19,14 +19,26 @@ export class HomePage {
   private reservations: Array<Reserva>;
   private rooms: Array<Sala>;
   private departaments: Array<Departamento>;
-  private login: Login = new Login(2, "admin", "admin", 4);
+  private login: Login = new Login(2, "admin", "admin", 2);
 
   constructor(public navCtrl: NavController, private connection: ConnectionService,
     private alert: AlertController, private modalCtrl: ModalController,
-    private toastCtrl: ToastController) {
+    private toastCtrl: ToastController, private menuCtrl: MenuController) {
+      this.authenticatedMenu();
       this.callLoadRoom();
       this.callLoadDepartament();
       this.callLoadMyReservations();
+  }
+
+  authenticatedMenu() {
+    for(var i = 0; i < this.menuCtrl.getMenus().length; i++) {
+      if (i == (this.login.permissao-1)) {
+        this.menuCtrl.enable(true, this.login.permissao.toString());
+      } else {
+        let j = i + 1;
+        this.menuCtrl.enable(false, j.toString());
+      }
+    }
   }
 
   confirmationAlert() {
@@ -94,8 +106,7 @@ export class HomePage {
   updateReservation(reservation: Reserva) {
     console.log(reservation);
     let encapsular: any = JSON.stringify(new Encapsular(JSON.stringify(this.login), JSON.stringify(reservation), ""));
-    let modal = this.modalCtrl.create(ReservationModal,
-      {encapsular:encapsular});
+    let modal = this.modalCtrl.create(ReservationModal, {encapsular:encapsular});
 
     modal.onDidDismiss( () => {
       if (this.callLoadMyReservations()) {
@@ -106,10 +117,15 @@ export class HomePage {
   }
 
   createReservation() {
-    let modal = this.modalCtrl.create(ReservationModal);
+    let reservation = new Reserva();
+    console.log(reservation);
+    let encapsular: any = JSON.stringify(new Encapsular(JSON.stringify(this.login), JSON.stringify(reservation), ""));
+    let modal = this.modalCtrl.create(ReservationModal, {encapsular:encapsular});
 
     modal.onDidDismiss( () => {
-      this.callLoadMyReservations();
+      if (this.callLoadMyReservations()) {
+        this.confirmationAlert();
+      }
     });
     modal.present();
   }
