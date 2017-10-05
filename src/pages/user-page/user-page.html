@@ -16,7 +16,6 @@
 
     <ion-item-sliding *ngFor="let u of users">
       <button ion-item clear detail-none (click)="showDetails(u)">{{ u.nome }}</button>
-
       <ion-item-options>
         <button ion-button color="primary" (click)="updateUser(u)">
           <ion-icon name="create"></ion-icon>

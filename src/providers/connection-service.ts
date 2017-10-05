@@ -8,8 +8,8 @@ export class ConnectionService {
   baseUri: string;
 
   constructor(public http: Http) {
-    this.baseUri = "http://localhost:8084/AppUemWS/webresources/reserva/";
-    //this.baseUri = "http://din.uem.br/appsmoveis/webresources/reserva/";
+    //this.baseUri = "http://localhost:8084/AppUemWS/webresources/reserva/";
+    this.baseUri = "http://din.uem.br/appsmoveis/webresources/reserva/";
   }
 
   loadToday() : Promise<Response> {
@@ -25,8 +25,17 @@ export class ConnectionService {
     });
   }
 
-  confirmarLogin(email: string, senha: string) : Promise<Response>{
-    return this.http.get(this.baseUri+'login/confirmarLogin/'+email+'/'+senha).toPromise();
+  confirmarLogin(email: string, senha: string){
+    return new Promise((resolve, reject) => {
+      this.http.get(this.baseUri+'login/confirmarLogin/'+email+'/'+senha)
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+        },
+        error => {
+          reject(error);
+        });
+    });
   }
 
   loadCourse() {
@@ -163,6 +172,16 @@ export class ConnectionService {
         });
     });
   }
+
+  /*
+  loadRoom() {
+    return this.http.get(this.baseUri+'sala/carregarSala')
+        .map(res => res.json())
+          .toPromise()
+        .catch(error => {
+          console.log(error);
+        });
+  }*/
 
   removeRoom(encapsulado) {
     let headers = new Headers();
@@ -350,6 +369,19 @@ export class ConnectionService {
     return new Promise((resolve, reject) => {
       this.http.post(this.baseUri+'anoLetivo/cadastrarAnoLetivo', JSON.stringify(encapsulate),
           {headers: headers})
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+        },
+        error => {
+          reject(error);
+        });
+    });
+  }
+
+  loadReservationToday(day: string, idDepart: number) {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.baseUri+'reserva/carregarReservaPorDia/'+day+'/'+idDepart)
         .map(res => res.json())
         .subscribe(data => {
           resolve(data);

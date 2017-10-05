@@ -15,7 +15,7 @@ export class Login {
       this.id = -1;
       this.email = "";
       this.senha = "";
-      this.permissao = 0;
+      this.permissao = -1;
     }
   }
 

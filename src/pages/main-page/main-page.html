@@ -1,0 +1,88 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Reservas</ion-title>
+    <ion-buttons end>
+      <button ion-button clear (click)="callLoginPage()">Login</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Data:</ion-label>
+      <ion-datetime displayFormat= "DD/MM/YYYY" min="{{ today }}" max="{{ 2018 }}" [(ngModel)]="actual" (ngModelChange)="actual = changeDateToString($event)" cancelText="Cancelar" doneText="Confirmar"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Departamento:</ion-label>
+      <ion-select [(ngModel)]="departamentId" okText="Selecionar" cancelText="Cancelar">
+        <ion-option *ngFor="let d of departaments" value="{{ d.id }}"> {{ d.nome }} </ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <div class="header">
+    <ion-buttons>
+      <button ion-button icon-only clear (click)="backRoom()">
+        <ion-icon name="arrow-dropleft-circle"></ion-icon>
+      </button>
+      <button ion-button clear [disabled]="true" [(ngModel)]="currentRoom" ngDefaultControl>
+        Sala {{ currentRoom.numero }}
+      </button>
+      <button ion-button icon-only clear (click)="nextRoom()">
+        <ion-icon name="arrow-dropright-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </div>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+
+        <ion-item>
+          <ion-avatar class="circle" item-left>
+            7:45/9:25
+          </ion-avatar>
+            Professor: Teste
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar class="circle" item-left>
+            9:40/12:00
+          </ion-avatar>
+            Professor: Teste
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar class="circle" item-left>
+            13:30/15:10
+          </ion-avatar>
+            Professor: Teste
+        </ion-item>
+        <ion-item>
+          <ion-avatar class="circle" item-left>
+            15:30/18:00
+          </ion-avatar>
+            Professor: Teste
+        </ion-item>
+        <ion-item>
+          <ion-avatar class="circle" item-left>
+            19:30/21:10
+          </ion-avatar>
+            Professor: Teste
+        </ion-item>
+        <ion-item>
+          <ion-avatar class="circle" item-left>
+            21:20/23:00
+          </ion-avatar>
+            Professor: Teste
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

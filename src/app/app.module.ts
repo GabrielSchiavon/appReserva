@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
+import { MainPage } from '../pages/main-page/main-page';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login-page/login-page';
 import { CoursePage } from '../pages/course-page/course-page';
@@ -42,7 +43,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AcademicYearModal,
     ReservationModal,
     DisciplinePage,
-    DisciplineModal
+    DisciplineModal,
+    MainPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AcademicYearModal,
     ReservationModal,
     DisciplinePage,
-    DisciplineModal
+    DisciplineModal,
+    MainPage
   ],
   providers: [
     StatusBar,
