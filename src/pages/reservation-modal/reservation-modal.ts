@@ -7,7 +7,6 @@ import { Usuario } from '../../models/Usuario';
 import { Departamento } from '../../models/Departamento';
 import { Disciplina } from '../../models/Disciplina';
 import { Sala } from '../../models/Sala';
-import { Encapsular } from '../../models/Encapsular';
 import { Login } from '../../models/Login';
 
 import * as moment from 'moment';

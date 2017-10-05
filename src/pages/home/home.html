@@ -13,7 +13,8 @@
 
     <ion-item-sliding *ngFor="let r of reservations">
       <ion-item>
-        {{ r.id }} {{ r.idusuario }}
+        Id reserva {{ r.id }}<br>
+        Id Usuario {{ r.idusuario }}
       </ion-item>
       <ion-item-options>
         <button ion-button color="primary" (click)="updateReservation(r)">

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, ModalController, ToastController, MenuController  } from 'ionic-angular';
+import { NavController, AlertController, ModalController, ToastController, MenuController, NavParams  } from 'ionic-angular';
 
 import { ConnectionService } from '../../providers/connection-service';
 import { ReservationModal } from './../reservation-modal/reservation-modal';
@@ -19,11 +19,12 @@ export class HomePage {
   private reservations: Array<Reserva>;
   private rooms: Array<Sala>;
   private departaments: Array<Departamento>;
-  private login: Login = new Login(2, "admin", "admin", 2);
+  private login: Login;
 
   constructor(public navCtrl: NavController, private connection: ConnectionService,
     private alert: AlertController, private modalCtrl: ModalController,
-    private toastCtrl: ToastController, private menuCtrl: MenuController) {
+    private toastCtrl: ToastController, private menuCtrl: MenuController, private navParams: NavParams) {
+      this.login = navParams.get('login');
       this.authenticatedMenu();
       this.callLoadRoom();
       this.callLoadDepartament();
@@ -70,7 +71,7 @@ export class HomePage {
 
   public callLoadMyReservations() {
     let that = this;
-    this.connection.loadReservation(this.login.getId())
+    this.connection.loadReservation(this.login.id)
       .then( function (data: Array<Reserva>) {
         that.reservations = data;
       }, (error) => {

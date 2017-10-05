@@ -1,15 +1,12 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
     <ion-title>Login</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
     <ion-avatar>
-      <img src="../../assets/icon/uem.png" class="iconUem">
+      <img src="./assets/icon/uem.png" class="iconUem">
     </ion-avatar>
 
     <ion-card>
@@ -17,25 +14,16 @@
       <ion-card-content>
         <ion-item>
           <ion-icon name="contact" item-left></ion-icon>
-          <ion-input type="text" placeholder="Usuário" [(ngModel)]="userField"></ion-input>
+          <ion-input type="text" placeholder="Usuário" [(ngModel)]="login.email"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-icon name="key" item-left></ion-icon>
-          <ion-input type="password" placeholder="Senha" [(ngModel)]="passField"></ion-input>
+          <ion-input type="password" placeholder="Senha" [(ngModel)]="login.senha"></ion-input>
         </ion-item>
       </ion-card-content>
 
-      <div class="centro">
-
-      </div>
-      <ion-row>
-        <ion-col>
-          <button ion-button name="btnCancel" class="btn">Cancelar</button>
-        </ion-col>
-        <ion-col>
-          <button ion-button name="btnLogin" class="btn" (click)="callLogin()">Login</button>
-        </ion-col>
-      </ion-row>
+      <button ion-button block large name="btnLogin" (click)="callLogin()">Login</button>
     </ion-card>
+    <button ion-button block name="btnForget" (click)="dismissPage()">Esqueceu sua senha?</button>
 </ion-content>

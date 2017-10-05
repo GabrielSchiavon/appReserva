@@ -4,13 +4,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { LoginPage } from '../pages/login-page/login-page';
 import { CoursePage } from '../pages/course-page/course-page';
 import { DepartamentPage } from '../pages/departament-page/departament-page';
 import { RoomPage } from '../pages/room-page/room-page';
 import { UserPage } from '../pages/user-page/user-page';
 import { AcademicYearPage } from '../pages/academic-year-page/academic-year-page';
 import { DisciplinePage } from '../pages/discipline-page/discipline-page';
+import { MainPage } from '../pages/main-page/main-page';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +18,7 @@ import { DisciplinePage } from '../pages/discipline-page/discipline-page';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = MainPage;
 
   pagesDocente: Array<{title: string, component: any}>;
   pagesSecretaria: Array<{title: string, component: any}>;
@@ -31,33 +31,34 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pagesDocente = [
-      { title: 'Home', component: HomePage },
-      { title: 'Login', component: LoginPage},
+      { title: 'Reservas', component: HomePage },
+      { title: 'Logout', component: MainPage},
     ];
 
     this.pagesSecretaria = [
-      { title: 'Home', component: HomePage },
-      { title: 'Login', component: LoginPage},
-      { title: 'Disciplinas', component: DisciplinePage}
+      { title: 'Reservas', component: HomePage },
+      { title: 'Disciplinas', component: DisciplinePage},
+      { title: 'Salas', component: RoomPage},
+      { title: 'Logout', component: MainPage}
     ];
 
     this.pagesAdminDpto = [
-      { title: 'Home', component: HomePage },
-      { title: 'Login', component: LoginPage},
+      { title: 'Reservas', component: HomePage },
       { title: 'Disciplinas', component: DisciplinePage},
-      { title: 'Usuarios', component: UserPage},
-      { title: 'Salas', component: RoomPage}
+      { title: 'Usuários', component: UserPage},
+      { title: 'Salas', component: RoomPage},
+      { title: 'Logout', component: MainPage}
     ];
 
     this.pagesAdminSistema = [
-      { title: 'Home', component: HomePage },
-      { title: 'Login', component: LoginPage},
+      { title: 'Reservas', component: HomePage },
       { title: 'Disciplinas', component: DisciplinePage},
-      { title: 'Usuarios', component: UserPage},
+      { title: 'Usuários', component: UserPage},
       { title: 'Salas', component: RoomPage},
       { title: 'Cursos', component: CoursePage},
       { title: 'Ano Letivo', component: AcademicYearPage},
-      { title: 'Departamentos', component: DepartamentPage}
+      { title: 'Departamentos', component: DepartamentPage},
+      { title: 'Logout', component: MainPage}
     ];
   }
 
